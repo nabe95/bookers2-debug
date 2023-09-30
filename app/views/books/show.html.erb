@@ -19,26 +19,20 @@
           <td><%= @book.body %></td>
             <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+            <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             <% end %>
             <!--いいね機能の追加-->
-          <td>
-            <% if @book.favorited_by?(current_user) %>
-            <p>
-              <%= link_to book_favorites_path(@book),method: :delete do %>
-                ♥<%= @book.favorites.count %>いいね
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to book_favorites_path(@book), method: :post do %>
-                ♡<%= @book.favorites.count %>いいね
-              <% end %>
-            </p>
-            <% end %>
-          </td>
+            <td>
+              <%= render 'favorites/favorite', book: @book %>
+            </td>
+            <!-- コメント機能 -->
+            <td>
+              コメント数:<%= @book.book_comments.count %>
+            </td>
         </tr>
       </table>
+        <%= render "book_comments/index",book: @book %>
+        <%= render "book_comments/form",book: @book, book_comment: @book_comment %>
     </div>
   </div>
 </div>
