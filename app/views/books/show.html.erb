@@ -22,8 +22,8 @@
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             <% end %>
             <!--いいね機能の追加-->
-            <td>
-              <%= render 'favorites/btn', book: @book %>
+            <td class=<%= "favorite-" + @book.id.to_s %> >
+              <%= render 'favorites/favorite', book: @book %>
             </td>
             <!-- コメント機能 -->
             <td>

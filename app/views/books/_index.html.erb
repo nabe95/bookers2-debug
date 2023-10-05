@@ -17,8 +17,8 @@
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
         <!--いいね機能の追加-->
-        <td>
-          <%= render 'favorites/btn', book: book %>
+        <td class=<%= "favorite-" + book.id.to_s %> >
+          <%= render 'favorites/favorite', book: book %>
         </td>
         <!-- コメント機能 -->
         <td>
