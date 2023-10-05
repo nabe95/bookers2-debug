@@ -26,12 +26,14 @@
               <%= render 'favorites/favorite', book: @book %>
             </td>
             <!-- コメント機能 -->
-            <td>
-              コメント数:<%= @book.book_comments.count %>
+            <td class="book-comments-counter">
+              <%= render 'book_comments/counter', book: @book %>
             </td>
         </tr>
       </table>
-        <%= render "book_comments/index",book: @book %>
+        <div class= "book-comments-index">
+          <%= render "book_comments/index",book: @book %>
+      </div>
         <%= render "book_comments/form",book: @book, book_comment: @book_comment %>
     </div>
   </div>
