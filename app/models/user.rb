@@ -16,7 +16,8 @@ class User < ApplicationRecord
   #DM機能
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  
+  # ページ閲覧数機能
+  has_many :view_counts, dependent: :destroy
   
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50}
